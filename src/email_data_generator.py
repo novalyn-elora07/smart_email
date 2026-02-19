@@ -2,32 +2,55 @@ import pandas as pd
 import random
 from datetime import datetime, timedelta
 
+# Enterprise-style email templates
 complaints = [
 """Hi Team,
-My order has not been delivered yet.
-Please resolve ASAP.
+My payment was deducted but order not confirmed.
+This is urgent. Please resolve immediately.
 
 Regards,
-Customer"""
+Customer""",
+
+"""Hello Support,
+The application keeps crashing during checkout.
+Need urgent fix.
+
+Thanks"""
 ]
 
 requests = [
+"""Dear Team,
+Can you please share the invoice for last month?
+
+Regards""",
+
 """Hello,
-Need invoice copy for last purchase.
+I would like to upgrade my subscription plan.
+Please guide me.
 
 Thanks"""
 ]
 
 feedback = [
 """Hi,
-Really happy with the service.
+Really happy with the service provided.
+Great support team.
 
-Regards"""
+Regards""",
+
+"""Hello Team,
+Loved the recent update.
+Very smooth experience.
+
+Thanks"""
 ]
 
 spam = [
 """Congratulations!!!
-Win lottery now click link"""
+You have won a free vacation. Click here now!!!""",
+
+"""Earn money fast from home.
+Limited time offer. Visit this link."""
 ]
 
 category_map = {
@@ -45,13 +68,13 @@ urgency_map = {
 }
 
 rows = []
-start_date = datetime(2022,1,1)
+start_date = datetime(2022, 1, 1)
 
 for i in range(5200):
     category = random.choice(list(category_map.keys()))
     email_text = random.choice(category_map[category])
     urgency = urgency_map[category]
-    timestamp = start_date + timedelta(days=random.randint(0,900))
+    timestamp = start_date + timedelta(days=random.randint(0, 900))
 
     rows.append([i, email_text, category, urgency, timestamp])
 
